@@ -73,3 +73,12 @@ Web app that generates MIDI from chess moves.
 Yet unreleased cryptocurrency. Aiming to reduce storage requirements by replacing blockchain for fungible tokens.
 
 `Cryptography`
+
+## CanHunger.org
+###### December 2020
+
+Web app developed to recieve donations for a speech and debate Christmas food drive. Raised $7,810.
+
+`JavaScript` `Firebase` `Stripe`
+
+[Project Site](https://canhunger.org)
