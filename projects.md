@@ -16,7 +16,7 @@ Avoiding Death. Spring League 2020 Battlesnake competitor. Based on a combinatio
 
 Web app for organizing and playing music.
 
-`JavaScript` `Vue`
+`JavaScript` `Vue` `Music`
 
 [Code](https://github.com/brandosha/music)
 |
@@ -51,3 +51,25 @@ Web app for exploring the Mandelbrot set and corresponding Julia sets. Powered b
 [Code](https://replit.com/@brandosha/mandelbrot)
 |
 [Project Site](https://mandelbrot.brandosha.repl.co)
+
+<br>
+
+## Chess Music
+###### July 2021
+
+Web app that generates MIDI from chess moves.
+
+`JavaScript` `Vue` `Music` `Chess`
+
+[Code](https://replit.com/@brandosha/chess-music)
+|
+[Project Site](https://chess-music.brandosha.repl.co)
+
+<br>
+
+## ******* Crypto
+###### February 2021
+
+Yet unreleased cryptocurrency. Aiming to reduce storage requirements by replacing blockchain for fungible tokens.
+
+`Cryptography`

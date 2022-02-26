@@ -44,16 +44,17 @@ body {
   flex-direction: column;
 }
 
-.project-title {
-  margin: 0;
-}
-
 .project-date {
   font-family: 'Courier New', Courier, monospace;
 }
 
+.project-title {
+  margin: 0;
+}
+
 .project-description {
   padding: 1em .25em;
+  line-height: 1.5;
 }
 
 .project-tags {
@@ -64,14 +65,18 @@ body {
 }
 
 .project-tag {
-  border-radius: .25em;
+  font-family: 'Courier New', Courier, monospace;
+
   background-color: #88888844;
   padding: .2em .4em;
-  font-family: 'Courier New', Courier, monospace;
+  border-radius: .25em;
+  
   margin-right: .5em;
 }
 
 .project-links {
+  height: 1.5em;
+
   display: flex;
   justify-content: flex-end;
 }
