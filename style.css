@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   background-color: black;
   color: #ddd;
@@ -17,6 +21,9 @@ body {
 .project {
   width: 100%;
   border-bottom: solid #ddd 1px;
+
+  display: flex;
+  align-items: stretch;
 }
 @media (min-width: 800px) {
   .project {
@@ -30,7 +37,11 @@ body {
 }
 
 .project-body {
+  width: 100%;
   padding: 2em;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .project-title {
@@ -43,6 +54,21 @@ body {
 
 .project-description {
   padding: 1em .25em;
+}
+
+.project-tags {
+  margin-top: auto;
+  margin-bottom: 1em;
+
+  display: flex;
+}
+
+.project-tag {
+  border-radius: .25em;
+  background-color: #88888844;
+  padding: .2em .4em;
+  font-family: 'Courier New', Courier, monospace;
+  margin-right: .5em;
 }
 
 .project-links {

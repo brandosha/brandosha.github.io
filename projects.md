@@ -1,18 +1,22 @@
 # Notable Projects
 
 ## Battlesnake
-`February 2022`
+###### February 2022
 
-Avoiding Death. My Battlesnake competitor for Spring League 2020.
+Avoiding Death. Spring League 2020 Battlesnake competitor. Based on a combination of MCTS and Q-Learning.
+
+`Go` `MCTS` `Game Theory`
 
 [Project Site](https://play.battlesnake.com/u/brandosha/avoiding-death/)
 
 <br>
 
 ## Music
-`December 2021`
+###### December 2021
 
-Web app for organizing and playing your music.
+Web app for organizing and playing music.
+
+`JavaScript` `Vue`
 
 [Code](https://github.com/brandosha/music)
 |
@@ -21,7 +25,7 @@ Web app for organizing and playing your music.
 <br>
 
 ## Physarum
-`November 2021`
+###### November 2021
 
 A WebGL implementation of the physarum transport network.
 
@@ -31,12 +35,16 @@ A WebGL implementation of the physarum transport network.
 |
 [Project Site](https://brandosha.github.io/physarum)
 
+`WebGL`
+
 <br>
 
 ## Mandelbrot
-`November 2021`
+###### November 2021
 
 Web app for exploring the Mandelbrot set and corresponding Julia sets. Powered by WebGL.
+
+`WebGL`
 
 [Inspiration](https://youtu.be/LqbZpur38nw)
 |

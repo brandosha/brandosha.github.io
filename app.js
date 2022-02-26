@@ -15,7 +15,7 @@ function makeEl(parent, tag, className, options) {
 }
 
 fetch("projects.md").then(res => res.text()).then(projectsMarkdown => {
-  const projects = projectsMarkdown.split("## ").slice(1)
+  const projects = projectsMarkdown.split("\n## ").slice(1)
   console.log(projects)
 
   const codeIcon = `
@@ -39,17 +39,25 @@ fetch("projects.md").then(res => res.text()).then(projectsMarkdown => {
   projects.forEach(project => {
     const lines = project.split("\n")
 
-    const outerProjectEl = makeEl(projectsEl, "div", "project")/*document.createElement("div")
-    outerProjectEl.className = "project"
-    projectsEl.appendChild(outerProjectEl)*/
-
-    const projectEl = makeEl(outerProjectEl, "div", "project-body")/*document.createElement("div")
-    projectEl.className = "project-body"
-    outerProjectEl.appendChild(projectEl)*/
+    const outerProjectEl = makeEl(projectsEl, "div", "project")
+    const projectEl = makeEl(outerProjectEl, "div", "project-body")
 
     const dateEl = makeEl(projectEl, "div", "project-date")
     const titleEl = makeEl(projectEl, "h2", "project-title")
     const descriptionEl = makeEl(projectEl, "p", "project-description")
+
+    const tagsEl = makeEl(projectEl, "div", "project-tags")
+    
+    const tags = project.match(/`.+?`/g)
+    if (tags) {
+      tags.forEach(tag => {
+        tag = tag.slice(1, -1)
+        makeEl(tagsEl, "div", "project-tag", {
+          innerText: tag
+        })
+      })
+    }
+
     const linksEl = makeEl(projectEl, "div", "project-links")
 
     const inspirationLink = project.match(/\[Inspiration\]\((.*)\)/)
@@ -83,7 +91,7 @@ fetch("projects.md").then(res => res.text()).then(projectsMarkdown => {
       linkEl.innerHTML = projectIcon
     }
 
-    dateEl.innerText = lines[1].split("`")[1]
+    dateEl.innerText = lines[1].slice(7)
     titleEl.innerText = lines[0]
     descriptionEl.innerText = lines[3]
   })
