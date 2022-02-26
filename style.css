@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  padding: 3em;
+  padding: 1.5em;
 }
 
 #projects {
@@ -38,10 +38,19 @@ body {
 
 .project-body {
   width: 100%;
-  padding: 2em;
+  padding: 2em 1em;
 
   display: flex;
   flex-direction: column;
+}
+@media (min-width: 500px) {
+  body{
+    padding: 3em;
+  }
+
+  .project-body {
+    padding: 2em;
+  }
 }
 
 .project-date {
