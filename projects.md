@@ -16,7 +16,7 @@ Avoiding Death. Spring League 2020 Battlesnake competitor. Based on a combinatio
 
 Web app for organizing and playing music.
 
-`JavaScript` `Vue` `Music`
+`Vue` `Music`
 
 [Code](https://github.com/brandosha/music)
 |
@@ -35,7 +35,7 @@ A WebGL implementation of the physarum transport network.
 |
 [Project Site](https://brandosha.github.io/physarum)
 
-`WebGL`
+`WebGL` `2D Graphics`
 
 <br>
 
@@ -44,13 +44,24 @@ A WebGL implementation of the physarum transport network.
 
 Web app for exploring the Mandelbrot set and corresponding Julia sets. Powered by WebGL.
 
-`WebGL`
+`WebGL` `2D Graphics`
 
 [Inspiration](https://youtu.be/LqbZpur38nw)
 |
 [Code](https://replit.com/@brandosha/mandelbrot)
 |
 [Project Site](https://mandelbrot.brandosha.repl.co)
+
+<br>
+
+## AudioVis
+###### November 2021
+
+MacOS app for playback and visualization of audio files.
+
+`SwiftUI` `DSP` `2D Graphics` `Music`
+
+[Demo](assets/AudioVis-demo.mov)
 
 <br>
 
@@ -79,6 +90,6 @@ Yet unreleased cryptocurrency. Aiming to reduce storage requirements by replacin
 
 Web app developed to recieve donations for a speech and debate Christmas food drive. Raised $7,810.
 
-`JavaScript` `Firebase` `Stripe`
+`Vue` `Firebase` `Stripe`
 
 [Project Site](https://canhunger.org)

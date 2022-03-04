@@ -47,7 +47,7 @@ fetch("projects.md").then(res => res.text()).then(projectsMarkdown => {
     const descriptionEl = makeEl(projectEl, "p", "project-description")
 
     const tagsEl = makeEl(projectEl, "div", "project-tags")
-    
+
     const tags = project.match(/`.+?`/g)
     if (tags) {
       tags.forEach(tag => {
@@ -81,12 +81,12 @@ fetch("projects.md").then(res => res.text()).then(projectsMarkdown => {
       linkEl.style.marginLeft = ".45em"
     }
 
-    const projectLink = project.match(/\[Project Site\]\((.*)\)/)
+    const projectLink = project.match(/\[(Project Site|Demo)\]\((.*)\)/)
     if (projectLink) {
       const linkEl = makeEl(linksEl, "a", "project-icon", {
-        title: "Project",
+        title: projectLink[1],
         target: "_BLANK",
-        href: projectLink[1]
+        href: projectLink[2]
       })
       linkEl.innerHTML = projectIcon
     }
