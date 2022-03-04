@@ -70,7 +70,7 @@ MacOS app for playback and visualization of audio files.
 
 Web app that generates MIDI from chess moves.
 
-`JavaScript` `Vue` `Music` `Chess`
+`Vue` `Music` `Chess`
 
 [Code](https://replit.com/@brandosha/chess-music)
 |

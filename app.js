@@ -14,10 +14,9 @@ function makeEl(parent, tag, className, options) {
   return el
 }
 
-fetch("projects.md").then(res => res.text()).then(projectsMarkdown => {
-  const projects = projectsMarkdown.split("\n## ").slice(1)
-  console.log(projects)
+var projects
 
+fetch("projects.md").then(res => res.text()).then(projectsMarkdown => {
   const codeIcon = `
 <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" fill="currentColor" class="bi bi-file-code" viewBox="0 0 16 16">
   <path d="M6.646 5.646a.5.5 0 1 1 .708.708L5.707 8l1.647 1.646a.5.5 0 0 1-.708.708l-2-2a.5.5 0 0 1 0-.708l2-2zm2.708 0a.5.5 0 1 0-.708.708L10.293 8 8.646 9.646a.5.5 0 0 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2z"/>
@@ -36,8 +35,13 @@ fetch("projects.md").then(res => res.text()).then(projectsMarkdown => {
   <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
 </svg>`
 
-  projects.forEach(project => {
-    const lines = project.split("\n")
+  const projectStrings = projectsMarkdown.split("\n## ").slice(1)
+  projects = projectStrings.map(projectStr => {
+    const project = {
+      tags: new Set()
+    }
+
+    const lines = projectStr.split("\n")
 
     const outerProjectEl = makeEl(projectsEl, "div", "project")
     const projectEl = makeEl(outerProjectEl, "div", "project-body")
@@ -46,21 +50,27 @@ fetch("projects.md").then(res => res.text()).then(projectsMarkdown => {
     const titleEl = makeEl(projectEl, "h2", "project-title")
     const descriptionEl = makeEl(projectEl, "p", "project-description")
 
+    dateEl.innerText = project.date = lines[1].slice(7)
+    titleEl.innerText = project.title = lines[0]
+    descriptionEl.innerText = project.description = lines[3]
+
     const tagsEl = makeEl(projectEl, "div", "project-tags")
 
-    const tags = project.match(/`.+?`/g)
+    const tags = projectStr.match(/`.+?`/g)
     if (tags) {
       tags.forEach(tag => {
         tag = tag.slice(1, -1)
         makeEl(tagsEl, "div", "project-tag", {
           innerText: tag
         })
+
+        project.tags.add(tag)
       })
     }
 
     const linksEl = makeEl(projectEl, "div", "project-links")
 
-    const inspirationLink = project.match(/\[Inspiration\]\((.*)\)/)
+    const inspirationLink = projectStr.match(/\[Inspiration\]\((.*)\)/)
     if (inspirationLink) {
       const linkEl = makeEl(linksEl, "a", "project-icon", {
         title: "Inspiration",
@@ -68,9 +78,11 @@ fetch("projects.md").then(res => res.text()).then(projectsMarkdown => {
         href: inspirationLink[1]
       })
       linkEl.innerHTML = inspirationIcon
+
+      project.inspiration = inspirationLink[1]
     }
 
-    const codeLink = project.match(/\[Code\]\((.*)\)/)
+    const codeLink = projectStr.match(/\[Code\]\((.*)\)/)
     if (codeLink) {
       const linkEl = makeEl(linksEl, "a", "project-icon", {
         title: "Code",
@@ -79,9 +91,11 @@ fetch("projects.md").then(res => res.text()).then(projectsMarkdown => {
       })
       linkEl.innerHTML = codeIcon
       linkEl.style.marginLeft = ".45em"
+
+      project.code = codeLink[1]
     }
 
-    const projectLink = project.match(/\[(Project Site|Demo)\]\((.*)\)/)
+    const projectLink = projectStr.match(/\[(Project Site|Demo)\]\((.*)\)/)
     if (projectLink) {
       const linkEl = makeEl(linksEl, "a", "project-icon", {
         title: projectLink[1],
@@ -89,10 +103,80 @@ fetch("projects.md").then(res => res.text()).then(projectsMarkdown => {
         href: projectLink[2]
       })
       linkEl.innerHTML = projectIcon
+
+      project.link = projectLink[2]
     }
 
-    dateEl.innerText = lines[1].slice(7)
-    titleEl.innerText = lines[0]
-    descriptionEl.innerText = lines[3]
+    return project
+  })
+
+  const tagScores = { }
+  projects.forEach(project => {
+    const year = parseInt(project.date.slice(-4))
+    const yearsAgo = new Date().getFullYear() - year
+
+    allTags(project.tags).forEach(tag => {
+      if (!tagScores[tag]) {
+        tagScores[tag] = 0
+      }
+      tagScores[tag] += 1 / (yearsAgo + 1)
+    })
+  })
+
+  console.log(tagScores)
+
+  var tagScoreList = []
+  for (const tag in tagScores) {
+    const score = tagScores[tag]
+
+    tagScoreList.push({
+      tag, score
+    })
+  }
+
+  tagScoreList.sort((a, b) => b.score - a.score)
+  console.log(tagScoreList)
+
+  const maxScore = tagScoreList[0].score
+  const minScore = tagScoreList[tagScoreList.length - 1].score
+
+  const tagsEl = document.getElementById("tag-rankings")
+  tagScoreList.forEach(({ tag, score }) => {
+    const lerp = (score - minScore) / (maxScore - minScore)
+
+    const tagEl = makeEl(tagsEl, "div", "project-tag")
+    tagEl.innerText = tag
+    tagEl.style.fontSize = `${lerp + 0.9}em`
+
+    // makeEl(tagEl, "h3", "tag-name", {
+    //   innerText: tag
+    // })
+
+    // const outerEl = makeEl(tagEl, "div", "tag-score")
+    // const innerEl = makeEl(outerEl, "div", "tag-score-inner")
+    // innerEl.style.width = `${score / tagScoreList[0].score * 100}%`
   })
 })
+
+const tagRelationships = {
+  "Vue": new Set(["JavaScript"]),
+  "WebGL": new Set(["JavaScript"])
+}
+
+/**
+ * @param { Set<string> } tags 
+ */
+function allTags(tags, result = new Set()) {
+  tags.forEach(tag => {
+    if (result.has(tag)) { return }
+
+    result.add(tag)
+
+    const relationships = tagRelationships[tag]
+    if (relationships) {
+      allTags(relationships, result)
+    }
+  })
+
+  return result
+}
