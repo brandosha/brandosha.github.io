@@ -3,20 +3,20 @@
 ## Battlesnake
 ###### February 2022
 
-Avoiding Death. Spring League 2020 Battlesnake competitor. Based on a combination of MCTS and Q-Learning.
+"Avoiding Death" Winner of the Spring League 2020 Battlesnake platinum tournament. Software is a combination of MCTS and Q-Learning. Hadware is a free tier heroku dyno.
 
 `Go` `MCTS` `Game Theory`
 
-[Project Site](https://play.battlesnake.com/u/brandosha/avoiding-death/)
+[Project Site](https://play.battlesnake.com/competitions/spring-league-2022/spring-league-2022-platinum/brackets/)
 
 <br>
 
 ## Music
 ###### December 2021
 
-Web app for organizing and playing music.
+Web app for organizing and playing music offline.
 
-`Vue` `Music`
+`Vue` `Service Workers` `Music`
 
 [Code](https://github.com/brandosha/music)
 |

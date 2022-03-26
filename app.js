@@ -43,7 +43,7 @@ fetch("projects.md").then(res => res.text()).then(projectsMarkdown => {
 
     const lines = projectStr.split("\n")
 
-    const outerProjectEl = makeEl(projectsEl, "div", "project")
+    const outerProjectEl = project.el = makeEl(projectsEl, "div", "project")
     const projectEl = makeEl(outerProjectEl, "div", "project-body")
 
     const dateEl = makeEl(projectEl, "div", "project-date")
@@ -115,7 +115,8 @@ fetch("projects.md").then(res => res.text()).then(projectsMarkdown => {
     const year = parseInt(project.date.slice(-4))
     const yearsAgo = new Date().getFullYear() - year
 
-    allTags(project.tags).forEach(tag => {
+    project.tags = allTags(project.tags)
+    project.tags.forEach(tag => {
       if (!tagScores[tag]) {
         tagScores[tag] = 0
       }
@@ -144,18 +145,27 @@ fetch("projects.md").then(res => res.text()).then(projectsMarkdown => {
   tagScoreList.forEach(({ tag, score }) => {
     const lerp = (score - minScore) / (maxScore - minScore)
 
-    const tagEl = makeEl(tagsEl, "div", "project-tag")
+    const tagEl = makeEl(tagsEl, "button", "project-tag")
     tagEl.innerText = tag
     tagEl.style.fontSize = `${lerp + 0.9}em`
+    tagEl.style.cursor = "pointer"
 
-    // makeEl(tagEl, "h3", "tag-name", {
-    //   innerText: tag
-    // })
-
-    // const outerEl = makeEl(tagEl, "div", "tag-score")
-    // const innerEl = makeEl(outerEl, "div", "tag-score-inner")
-    // innerEl.style.width = `${score / tagScoreList[0].score * 100}%`
+    tagEl.onclick = () => {
+      filterProjects(tag)
+    }
   })
+  
+  const clearFilterEl = makeEl(tagsEl, "button")
+  tagsEl.after(clearFilterEl)
+
+  clearFilterEl.id = "clear-filter"
+  clearFilterEl.innerText = "Clear Filter"
+
+  clearFilterEl.onclick = () => {
+    filterProjects()
+  }
+
+  clearFilterEl.style.display = "none"
 })
 
 const tagRelationships = {
@@ -179,4 +189,34 @@ function allTags(tags, result = new Set()) {
   })
 
   return result
+}
+
+function filterProjects(tag) {
+  if (tag) {
+    projects.forEach(project => {
+      if (project.tags.has(tag)) {
+        project.el.style.display = "block"
+      } else {
+        project.el.style.display = "none"
+      }
+    })
+
+    document.getElementById("clear-filter").style.display = "block"
+  } else {
+    projects.forEach(project => {
+      project.el.style.display = "block"
+    })
+
+    document.getElementById("clear-filter").style.display = "none"
+  }
+
+  for (tagEl of document.getElementById("tag-rankings").children) {
+    if (tagEl.innerText === tag) {
+      tagEl.style.backgroundColor = "#aaa"
+      tagEl.style.color = "#000"
+    } else {
+      tagEl.style.backgroundColor = ""
+      tagEl.style.color = ""
+    }
+  }
 }
