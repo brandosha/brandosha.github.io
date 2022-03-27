@@ -3,7 +3,7 @@
 ## Battlesnake
 ###### February 2022
 
-"Avoiding Death" Winner of the Spring League 2020 Battlesnake platinum tournament. Software is a combination of MCTS and Q-Learning. Hadware is a free tier heroku dyno.
+"Avoiding Death" Winner of the Spring League 2020 Battlesnake platinum tournament. Software is a combination of MCTS and Q-Learning. Hardware is a free tier heroku dyno.
 
 `Go` `MCTS` `Game Theory`
 
