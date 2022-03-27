@@ -155,17 +155,11 @@ fetch("projects.md").then(res => res.text()).then(projectsMarkdown => {
     }
   })
   
-  const clearFilterEl = makeEl(tagsEl, "button")
-  tagsEl.after(clearFilterEl)
-
-  clearFilterEl.id = "clear-filter"
-  clearFilterEl.innerText = "Clear Filter"
-
+  const clearFilterEl = document.getElementById("clear-filter")
+  clearFilterEl.style.display = "none"
   clearFilterEl.onclick = () => {
     filterProjects()
   }
-
-  clearFilterEl.style.display = "none"
 })
 
 const tagRelationships = {
