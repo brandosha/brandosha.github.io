@@ -78,7 +78,7 @@ Web app that generates MIDI from chess moves.
 
 <br>
 
-## ******* Crypto
+## _______ Crypto
 ###### February 2021
 
 Yet unreleased cryptocurrency. Aiming to reduce storage requirements by replacing blockchain for fungible tokens.
