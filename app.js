@@ -120,7 +120,7 @@ fetch("projects.md").then(res => res.text()).then(projectsMarkdown => {
       if (!tagScores[tag]) {
         tagScores[tag] = 0
       }
-      tagScores[tag] += 1 / (yearsAgo + 1)
+      tagScores[tag] += 1 / (0.5 * yearsAgo + 1)
     })
   })
 
@@ -164,7 +164,9 @@ fetch("projects.md").then(res => res.text()).then(projectsMarkdown => {
 
 const tagRelationships = {
   "Vue": new Set(["JavaScript"]),
-  "WebGL": new Set(["JavaScript"])
+  "WebGL": new Set(["JavaScript"]),
+  "Bootstrap": new Set(["CSS"]),
+  "SwiftUI": new Set(["Swift"]),
 }
 
 /**

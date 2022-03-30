@@ -16,7 +16,7 @@
 
 Web app for organizing and playing music offline.
 
-`Vue` `Service Workers` `Music`
+`Vue` `Bootstrap` `Service Workers` `Music`
 
 [Code](https://github.com/brandosha/music)
 |
@@ -70,7 +70,7 @@ MacOS app for playback and visualization of audio files.
 
 Web app that generates MIDI from chess moves.
 
-`Vue` `Music` `Chess`
+`Vue` `Bootstrap` `Music` `Chess`
 
 [Code](https://replit.com/@brandosha/chess-music)
 |
@@ -90,6 +90,48 @@ Yet unreleased cryptocurrency. Aiming to reduce storage requirements by replacin
 
 Web app developed to recieve donations for a speech and debate Christmas food drive. Raised $7,810.
 
-`Vue` `Firebase` `Stripe`
+`Vue` `Bootstrap` `Firebase` `Stripe` `Node.js` `TypeScript`
 
 [Project Site](https://canhunger.org)
+
+## Cards
+###### May 2020
+
+Chat room web app with commands to manipulate virtual cards. 
+
+`Vue` `Bootstrap` `WebSockets` `Node.js`
+
+[Code](https://replit.com/@brandosha/cardsv2)
+|
+[Project Site](https://cardsv2.brandosha.repl.co)
+
+## Social Distance Room
+###### April 2020
+
+Fully featuered WebRTC powered video chat web app.
+
+`Vue` `Bootstrap` `WebRTC` `Firebase`
+
+[Code](https://github.com/brandosha/socialdistanceroom)
+|
+[Project Site](https://socialdistanceroom.web.app)
+
+## ReflectionSession
+###### November 2018
+
+Real-time reflections in SceneKit with Metal. Renders the scene to a cubemap used as the reflective property of a material. Optionally blurs the cubemap to create a blurred reflection.
+
+`Swift` `SceneKit` `Metal` `MetalPerformanceShaders` `3D Graphics`
+
+[Code](https://gist.github.com/brandosha/133ff52829adde4b97f74bacff5ccc7d)
+|
+[Demo](https://www.youtube-nocookie.com/embed/8pTNId64nQg)
+
+## VR on iOS
+###### September 2018
+
+Library for creating virtual reality experiences for iOS using ARKit and SceneKit.
+
+`Swift` `ARKit` `SceneKit` `Multipeer Connectivity` `3D Graphics`
+
+[Code](https://github.com/brandosha/VR-on-iOS)
