@@ -191,7 +191,7 @@ function filterProjects(tag) {
   if (tag) {
     projects.forEach(project => {
       if (project.tags.has(tag)) {
-        project.el.style.display = "block"
+        project.el.style.display = ""
       } else {
         project.el.style.display = "none"
       }
@@ -200,7 +200,7 @@ function filterProjects(tag) {
     document.getElementById("clear-filter").style.display = "block"
   } else {
     projects.forEach(project => {
-      project.el.style.display = "block"
+      project.el.style.display = ""
     })
 
     document.getElementById("clear-filter").style.display = "none"
