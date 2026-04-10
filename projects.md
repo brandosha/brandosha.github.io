@@ -1,5 +1,25 @@
 # Notable Projects
 
+## Neighborhood
+###### April 2026
+
+A simple map-centric social platform built with React on AWS EC2 and MongoDB Atlas. Built for a CS Web Programming class.
+
+`React` `Bootstrap` `AWS` `MongoDB` `TypeScript` `WebSockets`
+
+[Code](https://github.com/brandosha/startup)
+|
+[Project Site](https://startup.blantz.click)
+
+## Chess
+###### April 2026
+
+A chess game on the command line. Connects to a backend server that manages the chess games in a MySQL database.
+
+`Java` `MySQL` `WebSockets`
+
+[Code](https://github.com/brandosha/chess)
+
 ## Battlesnake
 ###### February 2022
 
